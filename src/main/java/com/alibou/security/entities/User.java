@@ -1,11 +1,6 @@
-package com.alibou.security.user;
+package com.alibou.security.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +8,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Builder
@@ -24,7 +21,7 @@ import java.util.Collection;
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String firstname;
   private String lastname;
@@ -35,6 +32,9 @@ public class User implements UserDetails {
 
   @Enumerated(EnumType.STRING)
   private Role role;
+
+  @OneToMany(mappedBy = "user")
+  private List<Commande> commandes = new ArrayList<>();
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

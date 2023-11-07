@@ -2,9 +2,9 @@ package com.alibou.security.auth;
 
 import com.alibou.security.config.JwtService;
 import com.alibou.security.tfa.TwoFactorAuthenticationService;
-import com.alibou.security.user.Role;
-import com.alibou.security.user.User;
-import com.alibou.security.user.UserRepository;
+import com.alibou.security.entities.Role;
+import com.alibou.security.entities.User;
+import com.alibou.security.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
