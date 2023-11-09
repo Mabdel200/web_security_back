@@ -9,10 +9,12 @@ import com.alibou.security.repository.CategorieRepository;
 import com.alibou.security.repository.MarqueRepository;
 import com.alibou.security.service.MarqueService;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MarqueServiceImpl implements MarqueService{
 
     private MarqueRepository marqueRepository;
