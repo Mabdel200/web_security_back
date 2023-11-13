@@ -4,7 +4,7 @@ import com.alibou.security.payload.ProductDto;
 import com.alibou.security.payload.ProductResponse;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface ProduitService {
 
     ProductDto createProduct(ProductDto productDto);

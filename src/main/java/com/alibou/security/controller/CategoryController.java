@@ -2,6 +2,7 @@ package com.alibou.security.controller;
 
 import com.alibou.security.payload.CategoryDto;
 import com.alibou.security.service.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
+@CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class CategoryController {
 
     private CategoryService categoryService;
@@ -22,7 +25,7 @@ public class CategoryController {
     }
 
     //Build Add Category REST API
-    @PostMapping
+    @PostMapping("/createCategory")
     //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoryDto> addCategory(@RequestBody CategoryDto categoryDto){
         CategoryDto savedCategory = categoryService.addCategory(categoryDto);
@@ -31,7 +34,7 @@ public class CategoryController {
     }
 
     // Build Get category rest api
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CategoryDto> getCategory(@PathVariable("id") Long categoryId)
     {
         CategoryDto categoryDto = categoryService.getCategory(categoryId);

@@ -3,6 +3,7 @@ package com.alibou.security.controller;
 import com.alibou.security.payload.ProductDto;
 import com.alibou.security.payload.ProductResponse;
 import com.alibou.security.service.ProduitService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.alibou.security.utils.Constants.*;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/v1/product")
+@RequiredArgsConstructor
 public class ProduitController {
 
     private ProduitService produitService;
@@ -22,7 +25,7 @@ public class ProduitController {
     }
 
     //@PreAuthorize("hasRole('ADMIN')")
-    @PostMapping
+    @PostMapping("/createProduct")
     public ResponseEntity<ProductDto> createProduit(@RequestBody ProductDto productDto)
     {
         return ResponseEntity.ok(produitService.createProduct(productDto));

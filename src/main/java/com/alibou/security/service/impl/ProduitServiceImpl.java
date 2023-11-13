@@ -31,6 +31,7 @@ public class ProduitServiceImpl implements ProduitService {
     private MarqueRepository marqueRepository;
     private ModelMapper modelMapper;
 
+    @Autowired
     public ProduitServiceImpl(ProduitRepository produitRepository,
                               CategorieRepository categorieRepository, ModelMapper modelMapper) {
         this.produitRepository = produitRepository;
@@ -38,7 +39,6 @@ public class ProduitServiceImpl implements ProduitService {
         this.modelMapper = modelMapper;
     }
 
-    @Autowired
 
 
     @Override
